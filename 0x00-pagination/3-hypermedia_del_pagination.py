@@ -38,9 +38,11 @@ class Server:
                 i: dataset[i] for i in range(len(dataset))
             }
         return self.__indexed_dataset
-    
+
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        assert isinstance(index, int) and index >= 0 
+        """Returns a dictionary with information
+        """
+        assert isinstance(index, int) and index >= 0
         last_idx = list(self.indexed_dataset())[-1]
         assert index <= last_idx
         assert isinstance(page_size, int) and page_size > 0
