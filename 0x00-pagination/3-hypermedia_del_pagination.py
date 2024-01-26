@@ -43,18 +43,11 @@ class Server:
         """Returns a dictionary with information
         """
         assert isinstance(index, int) and index >= 0
-        last_idx = list(self.indexed_dataset())[-1]
-        assert index <= last_idx
         assert isinstance(page_size, int) and page_size > 0
-        next_idx = index + page_size
-        while next_idx <= last_idx:
-            if next_idx in self.__indexed_dataset.keys():
-                break
-            next_idx += 1
 
         return {
                 'index': index,
-                'next_index': next_idx,
+                'next_index': index + page_size,
                 'page_size': page_size,
                 'data': self.__dataset[index: index + page_size]
                 }
